@@ -28,7 +28,7 @@ export default function TextForm(props) {
             Enter to convert upper case:
           </label>
           <textarea
-            className="form-control"
+            className={`form-control bg-${props.toggleMode}`}
             id="textId"
             rows="8"
             value={text}
