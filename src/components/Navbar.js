@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -7,7 +8,7 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.navbarMode} bg-${props.navbarMode}`}
       data-bs-theme="props.navbarMode}"
     >
-      <a className="navbar-brand" href="/">
+      <Link className="navbar-brand" to="/">
         <img
           src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
           alt="Logo"
@@ -16,7 +17,7 @@ export default function Navbar(props) {
           className="d-inline-block align-text-top"
         />
         {props.title}
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -32,46 +33,46 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
-              Link
-            </a>
+            <Link className="nav-link" to="/about">
+              About
+            </Link>
           </li>
           <li className="nav-item dropdown">
-            <a
+            <Link
               className="nav-link dropdown-toggle"
-              href="/"
+              to="/"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               Dropdown link
-            </a>
+            </Link>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" href="/">
+                <Link className="dropdown-item" href="/">
                   Action
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="/">
+                <Link className="dropdown-item" href="/">
                   Another action
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="/">
+                <Link className="dropdown-item" href="/">
                   Something else here
-                </a>
+                </Link>
               </li>
             </ul>
           </li>
         </ul>
 
-        <form className="d-flex" role="search">
+        <form className="d-flex col-4 mx-3" role="search">
           <input
             className="form-control me-2"
             type="search"
@@ -82,9 +83,23 @@ export default function Navbar(props) {
             Search
           </button>
         </form>
-        <div className="form-check form-switch">
-          <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.navbarMode} mode</label>
+
+        <div className="form-check form-switch col-2">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            onClick={props.toggleMode}
+          />
+          <label
+            className="form-check-label"
+            id="switch"
+            htmlFor="flexSwitchCheckDefault"
+            style={{ textTransform: "capitalize" }}
+          >
+            {props.navbarMode} mode on
+          </label>
         </div>
       </div>
     </nav>
@@ -93,5 +108,5 @@ export default function Navbar(props) {
 
 Navbar.protoTypes = {
   title: PropTypes.string.isRequired,
-  aboutText: PropTypes.string.isRequired
+  aboutText: PropTypes.string.isRequired,
 };
