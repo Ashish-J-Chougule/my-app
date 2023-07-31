@@ -40,7 +40,6 @@ function App() {
     <Router>
       <Navbar title="Navbar" navbarMode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-      {/* <Routes> */}
       <Routes>
         <Route
           exact
@@ -53,13 +52,9 @@ function App() {
             />
           }
         >
-          {/* <div className="container"> */}
-
-          {/* </div> */}
         </Route>
         <Route exact path="/about" element={<About />}></Route>
       </Routes>
-      {/* </Routes> */}
     </Router>
   );
 }

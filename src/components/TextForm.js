@@ -38,17 +38,17 @@ export default function TextForm(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button
-          className="btn btn-primary mx-1"
+        <button disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           value={text}
           onClick={handleOnClick}
         >
           Convert to Upper
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleToUpper}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleToUpper}>
           Convert to Lower
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleToClear}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleToClear}>
           Clear Text
         </button>
       </div>
@@ -56,15 +56,14 @@ export default function TextForm(props) {
       <div className="container">
         <h2 className="my-3">Your Summary</h2>
         <p>
-          There are total {text ? text.trim().split(" ").length : 0} words and{" "}
-          {text.length} characters in this page.
+          There are total {text.split(/\s+/).filter((element)=> {return element.length !== 0}).length} words and {text.length} characters in this page.
         </p>
         <p>
-          Need {text ? 0.008 * text.trim().split(" ").length : 0} minutes to read this
+          Need {text ? 0.008 * text.split(' ').filter((element)=> {return element.length !== 0}).length : 0} minutes to read this
           page.
         </p>
         <h2 className="my-3">Preview</h2>
-        <p>{text}</p>
+        <p>{text.length == 0 ? "Nothing to preview..." : text}</p>
       </div>
     </>
   );
