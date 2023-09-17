@@ -63,7 +63,7 @@ export default function TextForm(props) {
           page.
         </p>
         <h2 className="my-3">Preview</h2>
-        <p>{text.length == 0 ? "Nothing to preview..." : text}</p>
+        <p>{text.length === 0 ? "Nothing to preview..." : text}</p>
       </div>
     </>
   );

@@ -26,6 +26,19 @@ export default function About() {
     }
   };
 
+  const changeHoverBackground = (e) => {
+    if (text.color === "white") {
+      e.target.style.background = 'red';
+    }else{
+      e.target.style.background = 'yellow';
+    }
+  }
+
+  const changeLeaveBackground = (e) => {
+    e.target.style.background = text.backgroundColor;
+    e.target.style.color = text.color;;
+  }
+
   return (
     <>
       <div className="container">
@@ -114,8 +127,8 @@ export default function About() {
               className="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is
+              <div className="accordion-body" onMouseOver={changeHoverBackground} onMouseLeave={changeLeaveBackground}>
+                This is the third item's accordion body. It is
                 hidden by default, until the collapse plugin adds the
                 appropriate classes that we use to style each element. These
                 classes control the overall appearance, as well as the showing
